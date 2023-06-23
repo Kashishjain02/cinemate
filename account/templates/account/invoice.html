@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Invoice {{ invoice.id }}</title>
+    </head>
+    <body>
+        <h1>Invoice {{ invoice.id }}</h1>
+        <p>Customer name: {{ invoice.customer_name }}</p>
+        <p>Date: {{ invoice.date }}</p>
+        <p>Total amount: {{ invoice.total_amount }}</p>
+        <!-- Add other details as necessary -->
+        <a href="{% url 'download_invoice' invoice.id %}">Download PDF</a>
+    </body>
+</html>

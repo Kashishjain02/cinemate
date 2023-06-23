@@ -1,0 +1,29 @@
+{% extends 'account/base.html' %} {%load static%} {% block title%} My Portfolio
+{%endblock%} {% block body%}
+<div
+    class="col-lg-5 p-5 d-flex align-items-end justify-content-end"
+    style="width: 100%">
+    <!-- Button trigger modal -->
+    <a href="{% url 'edit_portfolio' %}">
+        <button
+            type="button"
+            class="btn"
+            style="width: 220px; background: #2f174e; color: white">
+            Edit Portfolio
+        </button>
+    </a>
+</div>
+{%for i in portfolio%}
+<div style="width: 100%; height: 50vh" class="mb-3"">
+    <iframe
+        width="100%"
+        height="100%"
+        src="https://www.youtube.com/embed/{{i.link}}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="width: 80%; height: 100%; margin: auto; display: block">
+    </iframe>
+</div>
+{%endfor%} {%endblock%}

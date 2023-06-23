@@ -1,0 +1,307 @@
+{% extends 'account/base.html' %} {%load static%} {% block title%} Dashboard
+{%endblock%} {% block body%}
+<div class="container-fluid vh-100">
+    <div class="row h-100">
+        <!-- Left Part with content -->
+        <div
+            class="col-lg-7 p-0 d-flex align-items-start justify-content-center"
+            style="flex-direction: column; background: #cbdfeb">
+            <!-- first row with rank and earning -->
+            <div style="width: 100%" class="row justify-content-around">
+                <!-- Earning section -->
+                <div
+                    style="
+                        background: #6832dc;
+                        border-radius: 20px;
+                        color: #fff;
+                        flex-direction: column;
+                    "
+                    class="p-4 col-lg-6 col d-flex">
+                    <img
+                        src="https://icons.veryicon.com/png/o/miscellaneous/qianshi/graph-18.png"
+                        height="100px"
+                        width="150px" />
+                    <p style="font-size: 20px">Earnings</p>
+                    <h2 class="mt-2"><b>₹ {{freelancer.earning}}</b></h2>
+                    <div
+                        style="
+                            background: #4d23a8;
+                            border-radius: 50px;
+                            color: #fff;
+                        "
+                        class="p-2">
+                        + 10% since last month
+                    </div>
+                </div>
+                <!-- End -->
+
+                <!-- white section with rank -->
+                <div
+                    style="background: #ffffff; border-radius: 20px"
+                    class="p-4 col-lg-5 col">
+                    <div
+                        style="
+                            background: #f2e2f8;
+                            border-radius: 17px;
+                            width: 100%;
+                            height: 80px;
+                            justify-content: space-around;
+                        "
+                        class="p-2 d-flex align-items-center">
+                        <div
+                            style="
+                                background: #6832dc;
+                                border-radius: 17px;
+                                width: 33%;
+                                font-size: 24px;
+                                color: #fff;
+                                text-align: center;
+                            "
+                            class="p-2">
+                            #{{freelancer.rank}}
+                        </div>
+                        <div
+                            style="
+                                color: rgb(0, 0, 0);
+                                text-align: center;
+                                padding-top: 20px;
+                            ">
+                            <h3><b>Rank</b></h3>
+                            <p>in the world</p>
+                        </div>
+                    </div>
+                    <div
+                        style="
+                            background: #f2e2f8;
+                            border-radius: 17px;
+                            width: 100%;
+                            height: 80px;
+                            justify-content: space-around;
+                        "
+                        class="p-2 mt-4 d-flex align-items-center">
+                        <div
+                            style="
+                                background: #6832dc;
+                                border-radius: 17px;
+                                width: 33%;
+                                font-size: 24px;
+                                color: #fff;
+                                text-align: center;
+                            "
+                            class="p-2">
+                            {{upcoming_orders.count}}
+                        </div>
+                        <div
+                            style="
+                                color: rgb(0, 0, 0);
+                                text-align: center;
+                                padding-top: 20px;
+                            ">
+                            <h3><b>Projects</b></h3>
+                            <p>10 this month</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End  -->
+            </div>
+            <!-- end -->
+
+            <!-- Recent Projects -->
+            <div class="row mt-5 p-5" style="width: 100%">
+                <h2>Recent Invoices</h2>
+                <div class="col">
+                    <div
+                        class="orders-container"
+                        style="
+                            max-height: 248px;
+                            width: 100%;
+                            overflow-y: scroll;
+                            background: #fff;
+                            border-radius: 30px;
+                        ">
+                        <!-- Add your orders here -->
+                        {%for order in orders%}
+                        <div
+                            class="d-flex align-items-center border-bottom py-3 p-4">
+                            <img
+                                src="/media/{{order.client.client.image}}"
+                                alt="Client Image"
+                                class="me-3"
+                                style="max-width: 50px" />
+                            <div class="flex-grow-1">
+                                <h5 class="mb-1">
+                                    {{order.client.client.name}}
+                                </h5>
+                                <p class="mb-1">{{order.client.company}}</p>
+                            </div>
+                            <div
+                                style="
+                                    border-radius: 15px;
+                                    background: #77e20d;
+                                    color: #418100;
+                                    height: 20px;
+                                    padding: 0 15px 0 15px;
+                                    text-align: center;
+                                    margin-right: 20px;
+                                ">
+                                Paid
+                            </div>
+                            <div class="text-end">
+                                <h5 class="mb-1">₹ {{order.amount}}</h5>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+
+            <div class="row p-5" style="width: 100%">
+                <div
+                    class="d-flex align-items-center border-bottom py-3 p-4"
+                    style="background: #2f174e; border-radius: 15px">
+                    <img
+                        src="https://static.thenounproject.com/png/32718-200.png"
+                        alt="Product Image"
+                        class="me-3"
+                        style="max-width: 50px" />
+                    <div class="flex-grow-1" style="color: #fff">
+                        <h5
+                            class="mb-1"
+                            style="font-size: 22px; font-weight: 500">
+                            Engage with clients
+                        </h5>
+                        <p class="mb-1">Join slack channel</p>
+                    </div>
+
+                    <div class="text-end">
+                        <button
+                            class="btn btn-primary btn-lg"
+                            style="background-color: #6832dc; border: none">
+                            Join Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- left part end  -->
+
+        <!-- Right part -->
+        <div
+            class="col-lg-5 p-0 d-flex align-items-center justify-content-center">
+            <div style="width: 100%; height: 100%">
+                <!-- Upcoming Projects -->
+                <div class="row mt-5 p-5" style="width: 100%">
+                    <h2 style="font-size: 30px; font-weight: 600">
+                        Upcoming Projects
+                    </h2>
+                    <div class="col">
+                        <div
+                            class="orders-container"
+                            style="
+                                max-height: 200px;
+                                width: 100%;
+                                overflow-y: scroll;
+                                background: #fff;
+                                border-radius: 30px;
+                            ">
+                            <!-- Add your orders here -->
+                            {%for order in upcoming_orders%}
+                            <div
+                                class="d-flex align-items-center border-bottom py-3 p-4">
+                                <img
+                                    src="/media/{{order.client.client.image}}"
+                                    alt="Client Image"
+                                    class="me-3"
+                                    style="max-width: 50px" />
+                                <div class="flex-grow-1">
+                                    <p class="mb-1" style="font-size: 18px">
+                                        {{order.task}}
+                                    </p>
+                                    <p class="mb-1">{{order.deadline}}</p>
+                                </div>
+                            </div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+
+                <!-- Suggested Projects -->
+                <div class="row mt-5 p-5" style="width: 100%">
+                    <h2 style="font-size: 30px; font-weight: 600">
+                        Recommended Projects
+                    </h2>
+                    <div class="col">
+                        <div
+                            class="orders-container"
+                            style="
+                                width: 100%;
+                                background: #fff;
+                                border-radius: 30px;
+                            ">
+                            <!-- Add your orders here -->
+                            <div
+                                class="d-flex align-items-start border-bottom py-3 p-4"
+                                style="flex-direction: column">
+                                <div class="d-flex">
+                                    <img
+                                        src="/media/{{available_project.client.client.image}}"
+                                        alt="Client Image"
+                                        class="me-3"
+                                        style="max-width: 50px" />
+                                    <div class="flex-grow-1">
+                                        <p class="mb-1" style="font-size: 18px">
+                                            {{available_project.client.client.name}}
+                                        </p>
+                                        <p class="mb-1">
+                                            {{available_project.deadline}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="pt-3">
+                                    <b style="font-size: 18px; font-weight: 600"
+                                        >{{available_project.task}}</b
+                                    >
+
+                                    <p class="mt-2">
+                                        {{available_project.description}}
+                                    </p>
+                                    <div
+                                        style="
+                                            background: #cadfeb;
+                                            border-radius: 10px;
+                                            width: 100%;
+                                        "
+                                        class="p-2">
+                                        <b
+                                            style="
+                                                font-weight: 600;
+                                                font-size: 28px;
+                                            ">
+                                            ₹ {{available_project.amount}}
+                                        </b>
+                                        / day
+                                        <button
+                                            class="btn float-end"
+                                            style="
+                                                background: #cadfeb;
+                                                border: 1px solid #000000;
+                                                border-radius: 20px;
+                                            ">
+                                            enquire
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+            </div>
+        </div>
+        <!-- End -->
+    </div>
+</div>
+{%endblock%}

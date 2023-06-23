@@ -1,0 +1,50 @@
+{% extends 'client/base.html' %} {%load static%} {% block title%} My Portfolio
+{%endblock%} {% block head %}<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+{%endblock%} {% block body%}
+<div class="container-fluid vh-100">
+    <div class="row mt-5 p-5" style="width: 100%">
+        <h2>Recent Invoices</h2>
+        <div class="col-4">
+            <div
+                class="orders-container"
+                style="
+                    max-height: 500px;
+                    width: 100%;
+                    overflow-y: scroll;
+                    background: #fff;
+                    border-radius: 30px;
+                ">
+                <!-- Add your orders here -->
+                {% for order in upcoming_orders %}
+                <div class="d-flex align-items-center border-bottom py-3 p-4">
+                    <img
+                        src="/media/{{order.client.client.image}}"
+                        alt="Client Image"
+                        class="me-3"
+                        style="max-width: 50px" />
+                    <div class="flex-grow-1">
+                        <b class="mb-1">{{order.task}}</b>
+                        <p class="mb-1">{{order.deadline}}</p>
+                    </div>
+                    <!-- <div
+                        style="
+                            border-radius: 15px;
+                            background: #77e20d;
+                            color: #418100;
+                            height: 20px;
+                            padding: 0 15px 0 15px;
+                            text-align: center;
+                            margin-right: 20px;
+                        ">
+                        Paid
+                    </div> -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

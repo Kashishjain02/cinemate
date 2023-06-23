@@ -1,0 +1,191 @@
+{% extends 'account/base.html' %} {%load static%} {% block title%} Upload
+{%endblock%} {%block head%}
+
+<style>
+    .dropzone {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        background: #f8f8ff;
+    }
+
+    .dropzone.dragover {
+        background-color: #f8f8ff;
+    }
+    .uploaded-file {
+        background-color: #483ea863;
+    }
+</style>
+{%endblock%} {% block body%}
+<div style="width: 100%; min-height: 100vh; background: #f6f6f6" class="p-5">
+    <div class="container p-5" style="max-width: 550px; background: #fff">
+        <div
+            class="d-flex justify-content-center align-item-center"
+            style="flex-direction: column">
+            <div class="mb-3 mt-3">
+                <input type="file" class="form-control" id="fileInput" />
+            </div>
+            <div id="dropzone" class="dropzone">
+                <i class="fa-light fa-cloud-arrow-up"></i>
+                <i
+                    class="mdi mdi-cloud-upload"
+                    style="font-size: 50px; color: #483ea8b3"></i>
+
+                <p class="text-center">Drag and drop files here</p>
+                <p style="font-weight: 400; font-size: 12px; color: #676767">
+                    Supported formates: JPEG, PNG, GIF, MP4, PDF, PSD, AI, Word,
+                    PPT
+                </p>
+            </div>
+            <ul id="fileList" class="list-group mt-5"></ul>
+        </div>
+    </div>
+</div>
+<script>
+    const dropzone = document.getElementById("dropzone");
+    const fileList = document.getElementById("fileList");
+    const fileInput = document.getElementById("fileInput");
+
+    // Prevent default behavior for drag events
+    dropzone.addEventListener("dragenter", (e) => {
+        e.preventDefault();
+        dropzone.classList.add("dragover");
+    });
+
+    dropzone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropzone.classList.add("dragover");
+    });
+
+    dropzone.addEventListener("dragleave", (e) => {
+        e.preventDefault();
+        dropzone.classList.remove("dragover");
+    });
+
+    dropzone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropzone.classList.remove("dragover");
+
+        const files = e.dataTransfer.files;
+        handleFiles(files);
+    });
+
+    fileInput.addEventListener("change", (e) => {
+        const files = e.target.files;
+        handleFiles(files);
+    });
+
+    // const handleFiles = (files) => {
+    //     for (let i = 0; i < files.length; i++) {
+    //         const file = files[i];
+    //         console.log("Uploaded file:", file.name);
+
+    //         const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+
+    //         // Check if the file type is in the allowedTypes array
+    //         if (allowedTypes.includes(file.type)) {
+    //             const listItem = document.createElement("li");
+    //             listItem.classList.add("list-group-item");
+    //             listItem.textContent = file.name;
+    //             fileList.appendChild(listItem);
+
+    //             // Add the uploaded-file class to the list item
+    //             listItem.classList.add("uploaded-file");
+
+    //             // Send the file to the server
+    //             uploadFile(file);
+    //         } else {
+    //             console.error("Unsupported file format");
+    //         }
+    //     }
+    // };
+
+    // const uploadFile = (file) => {
+    //     const formData = new FormData();
+    //     formData.append("file", file);
+    //     // formData.append("csrfmiddlewaretoken", csrfToken); // Include the CSRF token in the form data
+
+    //     fetch("/upload/", {
+    //         method: "POST",
+    //         body: formData,
+    //     })
+    //         .then((response) => {
+    //             if (response.ok) {
+    //                 console.log("File uploaded successfully");
+    //             } else {
+    //                 console.error("Failed to upload file");
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error:", error);
+    //         });
+    // };
+
+    const handleFiles = (files) => {
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            console.log("Uploaded file:", file.name);
+
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+
+            // Check if the file type is in the allowedTypes array
+            if (allowedTypes.includes(file.type)) {
+                const listItem = document.createElement("li");
+                listItem.classList.add("list-group-item");
+                listItem.textContent = file.name;
+
+                const loadingIndicator = document.createElement("span");
+                loadingIndicator.classList.add("loading-indicator");
+                loadingIndicator.textContent = "Uploading...";
+                listItem.appendChild(loadingIndicator);
+
+                fileList.appendChild(listItem);
+
+                // Send the file to the server
+                uploadFile(file, listItem);
+            } else {
+                console.error("Unsupported file format");
+            }
+        }
+    };
+
+    const uploadFile = (file, listItem) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        // formData.append("csrfmiddlewaretoken", csrfToken); // Include the CSRF token in the form data
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/upload/");
+
+        xhr.upload.addEventListener("progress", (e) => {
+            if (e.lengthComputable) {
+                const percent = (e.loaded / e.total) * 100;
+                const loadingIndicator =
+                    listItem.querySelector(".loading-indicator");
+                loadingIndicator.textContent = `Uploading... ${Math.round(
+                    percent
+                )}%`;
+            }
+        });
+
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                console.log("File uploaded successfully");
+
+                // Remove the loading indicator
+                listItem.removeChild(
+                    listItem.querySelector(".loading-indicator")
+                );
+            } else {
+                console.error("Failed to upload file");
+            }
+        };
+
+        xhr.onerror = () => {
+            console.error("Error occurred during file upload");
+        };
+
+        xhr.send(formData);
+    };
+</script>
+{%endblock%}

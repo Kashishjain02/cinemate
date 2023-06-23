@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vertical Divider with Bootstrap 5</title>
+        <!-- Bootstrap 5 CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
+
+        <style>
+            /* Define the initial style for the div */
+            .border-div {
+                border: 2px solid #e5e5e5;
+                border-radius: 15px;
+                padding: 10px;
+            }
+
+            /* Define the hover style for the div */
+            .border-div:hover {
+                border-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid vh-100">
+            {% if msg %}
+            <div class="alert alert-danger" role="alert">
+                {{msg}}
+            </div>
+            {% endif %}
+            <div class="row h-100">
+                <!-- Left Part with image -->
+                <div
+                    class="col-lg-7 p-0 d-flex align-items-center justify-content-center">
+                    <div style="position:relative; height: 100%; width: 100%;">
+  <img
+                        src="https://media.istockphoto.com/id/503916834/photo/light-bulbs-glow.jpg?s=612x612&w=0&k=20&c=6ijGsBgNQcTpz_QlHHcdmfhCFTIO1J7SFMfS2vbhiyU="
+                        alt="Placeholder Image"
+                        class="img-fluid"
+                        style="height: 100%" />
+  <!-- Text on top left corner -->
+  <div style="position:absolute; top:28px; left:28px; font-size:20px; color:white;">
+    <h2>Cinemate.com</h2>
+  </div>
+
+  <!-- Text at center -->
+  <div style="position:absolute; top:35%; left:35%; transform: translate(-50%, -50%); font-size:30px; color:white;">
+    <div class="d-none d-md-block">CineMate.com is the best place to showcase your work by making your portfolio and get work without thinking about late payment in hassle free way.</div>
+    <button class="btn btn-dark mt-4" style="width: 220px;">
+                                <b>Hire a freelancer</b>
+                            </button>
+  </div>
+
+
+  <!-- Text at bottom -->
+  <div style="position:absolute; bottom:28px; left:28px; font-size:20px; color:white;">
+    <p>Garvit Mittal </p>
+    <p>CEO, cinemate.com</p>
+  </div>
+</div>
+                    
+                </div>
+
+                <!-- Right Part with form -->
+                <div
+                    class="col-lg-5 p-5 d-flex align-items-center justify-content-center" >
+                    <div
+                        class="align-items-center justify-content-center"
+                        style="width: 100%">
+                        <div style="text-align: center" class="mb-5">
+                            <h3>Create a account</h3>
+                            <p style="color: rgb(129, 125, 125)">
+                                Let’s get started as a talented freelancer
+                            </p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center">
+                        <form
+                            style="width: 70%"
+                            method="post"
+                            action="{% url 'user_register' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="form-label"
+                                    >Name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control border-0 border-bottom"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter your name" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label"
+                                    >Email address</label
+                                >
+                                <input
+                                    type="email"
+                                    class="form-control border-0 border-bottom"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter your email" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label"
+                                    >Password</label
+                                >
+                                <input
+                                    type="password"
+                                    class="form-control border-0 border-bottom"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Enter your password" />
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center mt-5">
+                            <button type="submit" class="btn btn-dark" style="width: 220px;">
+                                Create account
+                            </button>
+                            </div>
+          
+                        </div>
+                        </form>
+                        <div class="mt-4 "  style="text-align: center;">
+                            Already have an account?
+                            <b><a href="{% url 'login' %}">Sign in</a></b>
+                    </div>
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap 5 JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+    </body>
+</html>
