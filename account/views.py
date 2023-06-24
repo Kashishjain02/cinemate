@@ -295,5 +295,22 @@ def changepassword(request):
 def unauthorized(request):
     return render(request, 'account/unauthorized.html')
 
+def settings(request):
+    user=Account.objects.get(email=request.user.email)
+    if request.method == 'POST':
+        user.name = request.POST['name']
+        user.email = request.POST['email']
+        user.phone = request.POST['phone']
+        user.about = request.POST['about']
+        user.username = request.POST['username']
+        try:
+            user.save()
+        except:
+            return render(request, "account/settings.html",{ 'user': user , 'error': "username already exists"})
+        return redirect("dashboard")
+    return render(request, "account/settings.html",{ 'user': user })
+
 def check(request):
     return render(request, 'account/temp.html')
+
+

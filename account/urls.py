@@ -16,6 +16,8 @@ urlpatterns = [
     path('check/',views.check,name='check'),
     path('upload/', views.upload_file, name='upload_file'),
     path('unauthorized/',views.unauthorized,name='unauthorized'),
+    path('settings',views.settings,name="freelancer_settings")
+
 
 ]
 
