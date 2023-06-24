@@ -64,38 +64,7 @@
         display: block;
     }
 </style>
-{%endblock%} {% block body%}
-
-<div class="p-3">
-    <div
-        style="
-            background-color: #442d61;
-            color: #ffffff;
-            border-radius: 10px;
-            flex-direction: column;
-        "
-        class="d-flex align-items-center justify-content-center p-5">
-        <div
-            class="d-flex align-items-center justify-content-around"
-            style="justify-content: space-between">
-            <div>
-                <img
-                    src="../../media/{{freelancer.freelancer.image}}"
-                    style="height: 50px; border-radius: 50%" />
-                <b style="font-weight: 600; font-size: 24px">
-                    {{freelancer.freelancer.name}}
-                </b>
-            </div>
-            <b style="font-weight: 700; font-size: 40px">
-                #0{{freelancer.rank}}</b
-            >
-        </div>
-        <hr style="width: 80%; color: #cbdfeb; opacity: 1; height: 2px" />
-        <div>{{freelancer.about}}</div>
-    </div>
-</div>
-
-{%for i in portfolio%}
+{%endblock%} {% block body%} {%for i in portfolio%}
 <!-- <div style="width: 100%; height: 500px"> -->
 <div class="row h-100 mb-3 p-5">
     <div class="col-lg-8 p-0" style="height: 50vh">
