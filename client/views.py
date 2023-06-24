@@ -38,6 +38,9 @@ def settings(request):
         user.phone = request.POST['phone']
         user.about = request.POST['about']
         user.username = request.POST['username']
-        user.save()
+        try:
+            user.save()
+        except:
+            return render(request, "client/settings.html",{ 'user': user , 'error': "username already exists"})
         return redirect("../client/settings")
     return render(request, "client/settings.html",{ 'user': user })

@@ -71,8 +71,11 @@ class Account(AbstractBaseUser):
 
     def save(self, *args, **kwargs):
         # Custom save logic or modifications before saving
-        self.username = self.name.replace(" ", "")  + str(self.pk)
-
+        if self.username == None:
+            self.username = self.name.replace(" ", "")  + str(self.pk)
+        elif Account.objects.filter(username=self.username).exists():
+                raise ValueError("username already exists")
+        
         super().save(*args, **kwargs)  # Call the parent class's save() method
 
     def __str__(self):

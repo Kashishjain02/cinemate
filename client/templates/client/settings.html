@@ -105,6 +105,9 @@
                     Save changes
                 </button>
             </div>
+            {% if error %}
+            <p style="color: red">{{error}}</p>
+            {% endif %}
         </form>
     </div>
     <div class="col-md-4 p-4 mt-5" style="background-color: #fff">
