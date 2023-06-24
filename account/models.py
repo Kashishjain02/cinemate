@@ -69,6 +69,12 @@ class Account(AbstractBaseUser):
 
     objects = MyAccountManager()
 
+    def save(self, *args, **kwargs):
+        # Custom save logic or modifications before saving
+        self.username = self.name.replace(" ", "")  + str(self.pk)
+
+        super().save(*args, **kwargs)  # Call the parent class's save() method
+
     def __str__(self):
         return self.email
 
