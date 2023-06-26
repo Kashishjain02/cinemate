@@ -63,6 +63,7 @@ def userregister(request):
             return render(request, "account/register.html",{ 'msg': msg })
         except Exception as e:
             print(e)
+            msg =" username is already registered"
             return render(request, "account/register.html",{ 'msg': msg })
 
         # return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
