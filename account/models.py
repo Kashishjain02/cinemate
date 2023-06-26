@@ -69,19 +69,19 @@ class Account(AbstractBaseUser):
 
     objects = MyAccountManager()
 
-    # def save(self, *args, **kwargs):
-    #     # Custom save logic or modifications before saving
-    #     print("username is ",self.username)
-    #     if self.username == None:
-    #         self.username = self.name.replace(" ", "")  + str(self.pk)
-    #         print("username 77 ",self.username)
-    #     if self.username == '':
-    #         self.username = self.name.replace(" ", "")  + str(self.pk)
-    #         print("username 80 ",self.username)
-    #     elif Account.objects.filter(username=self.username).exists():
-    #             raise ValueError("username already exists")
+    def save(self, *args, **kwargs):
+        # Custom save logic or modifications before saving
+        print("username is ",self.username)
+        if self.username == None:
+            self.username = self.name.replace(" ", "")  + str(self.pk)
+            print("username 77 ",self.username)
+        if self.username == '':
+            self.username = self.name.replace(" ", "")  + str(self.pk)
+            print("username 80 ",self.username)
+        elif self !=Account.objects.get(username=self.username):
+                raise ValueError("username already exists")
         
-    #     super().save(*args, **kwargs)  # Call the parent class's save() method
+        super().save(*args, **kwargs)  # Call the parent class's save() method
 
     def __str__(self):
         return self.email
@@ -99,7 +99,7 @@ class Freelancer(models.Model):
     freelancer = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True, )
     email = models.EmailField(verbose_name="email", max_length=100)
     # about = models.TextField(default="about")
-    username = models.CharField(max_length=100, unique=True)
+    # username = models.CharField(max_length=100, unique=True)
     earning=models.IntegerField(default=0)
     expertise=models.CharField(max_length=50, default="videographer")
     rank=models.IntegerField(null=True,blank=True)

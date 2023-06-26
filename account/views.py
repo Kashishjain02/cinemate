@@ -57,8 +57,9 @@ def userregister(request):
             login(request, user)
             msg = "User Registration Successful"
             # return HttpResponse(msg)
-            return redirect("../dashboard/")
+            return redirect("dashboard")
         except IntegrityError as e:
+            print(e)
             msg = email + " is already registered"
             return render(request, "account/register.html",{ 'msg': msg })
         except Exception as e:
