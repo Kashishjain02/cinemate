@@ -90,7 +90,7 @@ def clientregister(request):
             login(request, user)
             msg = "User Registration Successful"
             # return HttpResponse(msg)
-            return redirect("../home/")
+            return redirect("home")
         except IntegrityError as e:
             msg = email + " is already registered"
             return render(request, "account/clientregister.html",{ 'msg': msg })
