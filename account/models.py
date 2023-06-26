@@ -69,19 +69,19 @@ class Account(AbstractBaseUser):
 
     objects = MyAccountManager()
 
-    def save(self, *args, **kwargs):
-        # Custom save logic or modifications before saving
-        print("username is ",self.username)
-        if self.username == None:
-            self.username = self.name.replace(" ", "")  + str(self.pk)
-            print("username 77 ",self.username)
-        if self.username == '':
-            self.username = self.name.replace(" ", "")  + str(self.pk)
-            print("username 80 ",self.username)
-        elif Account.objects.filter(username=self.username).exists():
-                raise ValueError("username already exists")
+    # def save(self, *args, **kwargs):
+    #     # Custom save logic or modifications before saving
+    #     print("username is ",self.username)
+    #     if self.username == None:
+    #         self.username = self.name.replace(" ", "")  + str(self.pk)
+    #         print("username 77 ",self.username)
+    #     if self.username == '':
+    #         self.username = self.name.replace(" ", "")  + str(self.pk)
+    #         print("username 80 ",self.username)
+    #     elif Account.objects.filter(username=self.username).exists():
+    #             raise ValueError("username already exists")
         
-        super().save(*args, **kwargs)  # Call the parent class's save() method
+    #     super().save(*args, **kwargs)  # Call the parent class's save() method
 
     def __str__(self):
         return self.email
