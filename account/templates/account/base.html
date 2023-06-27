@@ -76,7 +76,7 @@
                         <!-- Logo -->
                         <!-- ============================================================== -->
                         <div class="navbar-brand">
-                            <a href="index.html" class="logo">
+                            <a href="{% url 'dashboard' %}" class="logo">
                                 <!-- Logo icon -->
                                 <b class="logo-icon">
                                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -194,20 +194,19 @@
                     <div
                         style="
                             background: #442d61;
-                            padding-top: 40px;
+                            padding-top: 12px;
                             height: 100vh;
                             margin-top: 50px;
                             border-radius: 0px 100px 0px 0px;
                             position: relative;
                         ">
                         <nav class="sidebar-nav">
-                            <ul id="sidebarnav">
+                            <ul id="sidebarnav" style="font-size: 18px">
                                 <li class="sidebar-item">
                                     <a
                                         class="sidebar-link waves-effect waves-dark sidebar-link"
                                         href="{% url 'dashboard' %}"
-                                        aria-expanded="false"
-                                        style="font-size: 24px">
+                                        aria-expanded="false">
                                         <i
                                             class="mdi mdi-av-timer"
                                             style="font-size: 30px"></i>
@@ -218,8 +217,7 @@
                                     <a
                                         class="sidebar-link waves-effect waves-dark sidebar-link"
                                         href="{% url 'myportfolio' %}"
-                                        aria-expanded="false"
-                                        style="font-size: 24px">
+                                        aria-expanded="false">
                                         <i
                                             class="mdi mdi-av-timer"
                                             style="font-size: 30px"></i>
@@ -230,8 +228,7 @@
                                     <a
                                         class="sidebar-link waves-effect waves-dark sidebar-link"
                                         href="{% url 'myprojects' %}"
-                                        aria-expanded="false"
-                                        style="font-size: 24px">
+                                        aria-expanded="false">
                                         <i
                                             class="mdi mdi-arrange-bring-forward"
                                             style="font-size: 30px"></i>
@@ -242,8 +239,7 @@
                                     <a
                                         class="sidebar-link waves-effect waves-dark sidebar-link"
                                         href="table-basic.html"
-                                        aria-expanded="false"
-                                        style="font-size: 24px">
+                                        aria-expanded="false">
                                         <i
                                             class="mdi mdi-border-none"
                                             style="font-size: 30px"></i>
@@ -254,8 +250,7 @@
                                     <a
                                         class="sidebar-link waves-effect waves-dark sidebar-link"
                                         href="icon-material.html"
-                                        aria-expanded="false"
-                                        style="font-size: 24px">
+                                        aria-expanded="false">
                                         <i
                                             class="mdi mdi-face"
                                             style="font-size: 30px"></i>
@@ -266,8 +261,7 @@
                                     <a
                                         class="sidebar-link waves-effect waves-dark sidebar-link"
                                         href="{% url 'freelancer_settings' %}"
-                                        aria-expanded="false"
-                                        style="font-size: 24px">
+                                        aria-expanded="false">
                                         <i
                                             class="mdi mdi-file"
                                             style="font-size: 30px"></i>
