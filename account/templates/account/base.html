@@ -128,7 +128,9 @@
                         <!-- ============================================================== -->
                         <!-- Right side toggle and nav items -->
                         <!-- ============================================================== -->
-                        <ul class="navbar-nav float-end">
+                        <ul
+                            class="navbar-nav d-flex justify-content-end"
+                            style="width: 100%">
                             <!-- ============================================================== -->
                             <!-- User profile and search -->
                             <!-- ============================================================== -->
@@ -145,6 +147,13 @@
                                         alt="user"
                                         class="rounded-circle"
                                         width="31" />
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a
+                                    class="nav-link text-muted waves-effect waves-dark"
+                                    href="{% url 'logout' %}">
+                                    logout
                                 </a>
                             </li>
                             <!-- ============================================================== -->

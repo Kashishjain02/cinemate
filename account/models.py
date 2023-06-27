@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
+import datetime
 # Create your models here.
 
 
@@ -126,7 +126,7 @@ class Portfolio(models.Model):
     partnership = models.JSONField(default=[],null=True,blank=True)
     review = models.TextField(default="description")
     likes = models.IntegerField(default=0)
-    date = models.DateField()
+    date = models.DateField(default=datetime.date.today)
     is_image = models.BooleanField(default=True)
 
     def __str__(self):

@@ -83,8 +83,8 @@
         "
         class="d-flex align-items-center justify-content-center p-5">
         <div
-            class="d-flex align-items-center justify-content-around"
-            style="justify-content: space-between">
+            class="d-flex align-items-center"
+            style="justify-content: space-between; width: 100%">
             <div>
                 <img
                     src="../../media/{{freelancer.freelancer.image}}"
@@ -98,7 +98,14 @@
             >
         </div>
         <hr style="width: 80%; color: #cbdfeb; opacity: 1; height: 2px" />
-        <div>{{freelancer.about}}</div>
+        <div
+            class="d-flex align-items-center justify-content-start"
+            style="width: 100%">
+            <b>About</b>
+            <div style="padding-left: 15px">
+                {{freelancer.freelancer.about}}
+            </div>
+        </div>
     </div>
 </div>
 

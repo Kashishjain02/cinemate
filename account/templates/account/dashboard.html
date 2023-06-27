@@ -108,7 +108,9 @@
 
             <!-- Recent Projects -->
             <div class="row mt-5 p-5" style="width: 100%">
-                <h2>Recent Invoices</h2>
+                <h2 style="font-size: 30px; font-weight: 600">
+                    Recent Invoices
+                </h2>
                 <div class="col">
                     <div
                         class="orders-container"
@@ -119,6 +121,7 @@
                             background: #fff;
                             border-radius: 30px;
                         ">
+                        {%if orders.count != 0%}
                         <!-- Add your orders here -->
                         {%for order in orders%}
                         <div
@@ -150,7 +153,14 @@
                                 <h5 class="mb-1">₹ {{order.amount}}</h5>
                             </div>
                         </div>
-                        {%endfor%}
+                        {%endfor%} {%else%}
+                        <div
+                            class="d-flex align-items-center border-bottom py-3 p-4">
+                            <div class="flex-grow-1">
+                                <h5 class="mb-1">No Orders</h5>
+                            </div>
+                        </div>
+                        {%endif%}
                     </div>
                 </div>
             </div>
@@ -206,6 +216,7 @@
                                 background: #fff;
                                 border-radius: 30px;
                             ">
+                            {%if upcoming_orders.count != 0%}
                             <!-- Add your orders here -->
                             {%for order in upcoming_orders%}
                             <div
@@ -222,7 +233,14 @@
                                     <p class="mb-1">{{order.deadline}}</p>
                                 </div>
                             </div>
-                            {%endfor%}
+                            {%endfor%} {%else%}
+                            <div
+                                class="d-flex align-items-center border-bottom py-3 p-4">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1">No Orders</h5>
+                                </div>
+                            </div>
+                            {%endif%}
                         </div>
                     </div>
                 </div>
