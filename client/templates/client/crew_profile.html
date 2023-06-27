@@ -1,69 +1,7 @@
 {% extends 'client/base.html' %} {%load static%} {% block title%} My Portfolio
 {%endblock%} {% block head%}
 <!-- for toggle button -->
-<style>
-    .button-container {
-        position: relative;
-        display: inline-block;
-    }
 
-    .plus-button {
-        background-color: #ffffff;
-        color: #2f174e;
-        border: none;
-        padding: 1px 10px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    .plus-icon,
-    .cross-icon {
-        display: inline-block;
-        font-size: 40px;
-        line-height: 1;
-    }
-    .cross-icon {
-        display: none;
-    }
-
-    .options-container {
-        position: absolute;
-        bottom: 100%;
-        left: 0;
-        background-color: #ffffff;
-        padding: 10px;
-        border: 1px solid #dddddd;
-        border-radius: 5px;
-        display: none;
-    }
-
-    .option {
-        display: block;
-        margin-bottom: 5px;
-        padding: 5px 10px;
-        border: none;
-        background-color: #f2f2f2;
-        color: #333333;
-        cursor: pointer;
-    }
-
-    .option:hover {
-        background-color: #e6e6e6;
-    }
-
-    /* Added styles */
-    .active .plus-icon {
-        display: none;
-    }
-
-    .active .cross-icon {
-        display: inline-block;
-    }
-
-    .show {
-        display: block;
-    }
-</style>
 {%endblock%} {% block body%}
 
 <div class="p-3">
@@ -187,28 +125,4 @@
         </div>
     </div>
 </div>
-{%endfor%}
-
-<div
-    class="button-container"
-    style="position: fixed; bottom: 20px; right: 20px">
-    <div id="options" class="options-container">
-        <button class="option">Option 1</button>
-        <button class="option">Option 2</button>
-    </div>
-    <button id="toggle-button" class="plus-button">
-        <span class="plus-icon">+</span>
-        <span class="cross-icon">x</span>
-    </button>
-</div>
-
-<script>
-    const toggleButton = document.getElementById("toggle-button");
-    const optionsContainer = document.getElementById("options");
-
-    toggleButton.addEventListener("click", function () {
-        toggleButton.classList.toggle("active");
-        optionsContainer.classList.toggle("show");
-    });
-</script>
-{%endblock%}
+{%endfor%} {%endblock%}
