@@ -15,6 +15,7 @@ urlpatterns = [
     path('changepassword/',views.changepassword,name='changepassword'),
     path('check/',views.check,name='check'),
     path('upload/', views.upload_file, name='upload_file'),
+    path('update-dp/', views.update_dp, name='update_dp'),
     path('unauthorized/',views.unauthorized,name='unauthorized'),
     path('settings',views.settings,name="freelancer_settings")
 

@@ -12,7 +12,7 @@ import datetime
 import random
 from datetime import date
 from django.core.files.storage import default_storage
-
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect, HttpResponse
 # ---------------------------------------------------
 # GLOBAL VARIABLES
@@ -123,9 +123,9 @@ def userlogin(request):
                 #     next="../"
                 # return redirect(next)
                 if user.is_freelancer:
-                    return redirect("../dashboard/")
+                    return redirect("dashboard")
                 else:
-                    return redirect("../home/")
+                    return redirect("home")
             else:
                 msg = "invalid Email or password"
                 form = AccountAuthenticationForm()
@@ -136,7 +136,23 @@ def userlogin(request):
         return render(request, 'account/login.html', {"form": form})
     # username=BaseUserManager.normalize_email(username)
 
+@csrf_exempt
+# @api_view(['GET','POST'])
+def update_dp(request):
+    if request.user.is_authenticated:
+            print("user is authenticated")
+            if request.method == 'POST' and request.FILES.get('file'):
+                uploaded_file = request.FILES['file']
 
+                # Process the uploaded file here
+                
+                user=Account.objects.get(email=request.user.email)
+                user.image=uploaded_file
+                user.save()
+            return render(request, 'account/update_dp.html')
+        
+    else:
+        return redirect("login")
 
 
 @login_required(login_url="../login")
@@ -204,13 +220,13 @@ def edit_portfolio(request):
                 Portfolio.objects.create(freelancer=freelancer, link=video_id,is_image=False)
         
                 # freelancer.save()
-                return redirect("../my-portfolio/")
+                return redirect("edit_portfolio")
             return render(request, "account/edit_portfolio.html",{ 'portfolio': portfolio ,"freelancer":freelancer})
         else:
             return redirect("unauthorized")
     else:
         return redirect("../login")
-from django.views.decorators.csrf import csrf_exempt
+
 
 @csrf_exempt
 # @api_view(['GET','POST'])
@@ -229,6 +245,9 @@ def upload_file(request):
             return redirect("unauthorized")
     else:
         return redirect("login")
+
+
+
 
 def myprojects(request):
     if request.user.is_authenticated:

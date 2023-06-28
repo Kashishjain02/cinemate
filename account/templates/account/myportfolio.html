@@ -14,16 +14,105 @@
     </a>
 </div>
 {%for i in portfolio%}
-<div style="width: 100%; height: 50vh" class="mb-3"">
-    <iframe
-        width="100%"
-        height="100%"
-        src="https://www.youtube.com/embed/{{i.link}}"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        style="width: 80%; height: 100%; margin: auto; display: block">
-    </iframe>
+<div class="row h-100 mb-3 p-5">
+    <div
+        class="col-lg-8 p-0 d-flex justify-content-center"
+        style="height: 50vh">
+        {% if i.is_image %}
+        <div
+            style="background: #000; width: 80%; height: 100%"
+            class="d-flex align-items-center justify-content-center">
+            <img
+                src="../../media/{{i.image}}"
+                alt="..."
+                class="img-fluid"
+                style="
+                    height: auto;
+                    max-width: 100%;
+                    width: auto;
+                    max-height: 100%;
+                " />
+        </div>
+        {% else %}
+        <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/{{i.link}}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style="width: 80%; height: 100%; margin: auto; display: block">
+        </iframe>
+        {% endif %}
+    </div>
+    <div class="col-lg-4 p-3">
+        <div
+            class="p-4"
+            style="
+                background: #2f174e;
+                border-radius: 60px;
+                height: 100%;
+                color: #fff;
+            ">
+            <!-- FOR : {{i.forclient}}<br /><br />
+            AS : Writer<br /><br />
+            IN : April 2020<br /><br />
+            WITH :<br />
+            @Shubhamkumar212 as Co-Writer<br />
+            @HemantShahh as Editor<br />
+            @GauravSharma01 as Videographer<br /><br />
+            Client's Review:<br />
+            Couldn't be happier with the results. They brought a fresh and
+            creative approach that truly captured the essence of my brand.
+            Highly recommend! -->
+            <table
+                class="table"
+                style="
+                    color: #fff;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                ">
+                <tbody>
+                    <tr>
+                        <th scope="row">FOR</th>
+                        <td>{{i.forclient}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">AS</th>
+                        <td>{{i.role}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">IN</th>
+                        <td colspan="2">{{i.date}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">With</th>
+                        <td
+                            colspan="2"
+                            style="font-size: 14px; font-weight: 400">
+                            @Shubhamkumar212 as Co-Writer<br />
+                            @HemantShahh as Editor
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>REVIEW</td>
+                    </tr>
+                    <tr>
+                        <td
+                            colspan="2"
+                            style="
+                                font-weight: 400;
+                                font-size: 14px;
+                                line-height: 17px;
+                            ">
+                            {{i.review}}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {%endfor%} {%endblock%}

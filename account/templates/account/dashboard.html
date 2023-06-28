@@ -9,30 +9,36 @@
             <!-- first row with rank and earning -->
             <div style="width: 100%" class="row justify-content-around">
                 <!-- Earning section -->
-                <div
-                    style="
-                        background: #6832dc;
-                        border-radius: 20px;
-                        color: #fff;
-                        flex-direction: column;
-                    "
-                    class="p-4 col-lg-6 col d-flex">
-                    <img
-                        src="https://icons.veryicon.com/png/o/miscellaneous/qianshi/graph-18.png"
-                        height="100px"
-                        width="150px" />
-                    <p style="font-size: 20px">Earnings</p>
-                    <h2 class="mt-2"><b>₹ {{freelancer.earning}}</b></h2>
+                
                     <div
                         style="
-                            background: #4d23a8;
-                            border-radius: 50px;
+                            background: #6832dc;
+                            border-radius: 20px;
                             color: #fff;
+                            flex-direction: column;
                         "
-                        class="p-2">
-                        + 10% since last month
+                        class="p-4 col-lg-6 col d-flex">
+                        <a href="{%url 'unauthorized'%}" style="color: #fff;">
+                            <div>
+                                <img
+                                    src="https://icons.veryicon.com/png/o/miscellaneous/qianshi/graph-18.png"
+                                    height="100px"
+                                    width="150px" />
+                                <p style="font-size: 20px">Earnings</p>
+                                <h2 class="mt-2"><b>₹ {{freelancer.earning}}</b></h2>
+                                <div
+                                    style="
+                                        background: #4d23a8;
+                                        border-radius: 50px;
+                                        color: #fff;
+                                    "
+                                    class="p-2">
+                                    + 10% since last month
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
+                </a>
                 <!-- End -->
 
                 <!-- white section with rank -->

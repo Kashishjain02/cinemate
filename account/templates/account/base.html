@@ -130,20 +130,16 @@
                         <!-- ============================================================== -->
                         <ul
                             class="navbar-nav d-flex justify-content-end"
-                            style="width: 100%">
+                            style="width: 100%; font-size: 18px">
                             <!-- ============================================================== -->
                             <!-- User profile and search -->
                             <!-- ============================================================== -->
                             <li class="nav-item dropdown">
                                 <a
                                     class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
-                                    href="#"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                    href="{% url 'freelancer_settings' %}">
                                     <img
-                                        src="../../assets/images/users/1.jpg"
+                                        src="{%static 'account/assets/images/default.png'%}"
                                         alt="user"
                                         class="rounded-circle"
                                         width="31" />
@@ -152,8 +148,17 @@
                             <li class="nav-item dropdown">
                                 <a
                                     class="nav-link text-muted waves-effect waves-dark"
+                                    style="line-height: normal"
                                     href="{% url 'logout' %}">
-                                    logout
+                                    <div
+                                        class="d-flex align-items-center justify-content-center"
+                                        style="
+                                            flex-direction: column;
+                                            height: 100%;
+                                        ">
+                                        <i class="mdi mdi-logout"></i>
+                                        <div>Logout</div>
+                                    </div>
                                 </a>
                             </li>
                             <!-- ============================================================== -->
@@ -178,18 +183,22 @@
                     <div
                         class="d-flex align-items-center justify-content-center"
                         style="flex-direction: column">
-                        <img
-                            src="/media/{{user.image}}"
-                            class="light-logo"
-                            style="
-                                border-radius: 50%;
-                                width: 45%;
-                                height: 45%;
-                            " />
+                        <a
+                            href="{% url 'update_dp' %}"
+                            class="d-flex align-items-center justify-content-center">
+                            <img
+                                src="/media/{{user.image}}"
+                                class="light-logo"
+                                style="
+                                    border-radius: 50%;
+                                    width: 45%;
+                                    height: 45%;
+                                " />
+                        </a>
                         <h4 class="mt-3" style="color: #fff">
                             <b>{{user.name}}</b>
                         </h4>
-                        <button
+                        <!-- <button
                             class="btn"
                             style="
                                 background: #6831dc;
@@ -197,7 +206,7 @@
                                 border-radius: 15px;
                             ">
                             videographer
-                        </button>
+                        </button> -->
                     </div>
                     <!-- Sidebar navigation-->
                     <div
