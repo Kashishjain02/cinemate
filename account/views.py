@@ -331,6 +331,20 @@ def settings(request):
         return redirect("dashboard")
     return render(request, "account/settings.html",{ 'user': user })
 
+
+def report(request):
+    if request.user.is_authenticated:
+        if request.user.is_freelancer:
+            freelancer = Freelancer.objects.get(email=request.user.email)
+            orders=Order.objects.filter(freelancer=freelancer)
+            upcoming_order=UpcomingOrder.objects.filter(freelancer=freelancer)
+            return render(request, "account/report.html",{'orders':orders,'freelancer':freelancer,'upcoming_orders':upcoming_order})
+        else:
+            return redirect("unauthorized")
+    else:
+        return redirect("login")
+
+
 def check(request):
     return render(request, 'account/temp.html')
 

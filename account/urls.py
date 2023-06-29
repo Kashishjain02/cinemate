@@ -10,6 +10,7 @@ urlpatterns = [
     path('my-portfolio/',views.myportfolio,name='myportfolio'),
     path('edit_portfolio/',views.edit_portfolio,name='edit_portfolio'),
     path('my-projects/',views.myprojects,name='myprojects'),
+    path('report/',views.report,name='crew_report'),
     path('logout/',views.logoutuser,name='logout'),
     path('account/',views.account_view,name='account'),
     path('changepassword/',views.changepassword,name='changepassword'),
