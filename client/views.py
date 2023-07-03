@@ -44,3 +44,18 @@ def settings(request):
             return render(request, "client/settings.html",{ 'user': user , 'error': "username already exists"})
         return redirect("../client/settings")
     return render(request, "client/settings.html",{ 'user': user })
+
+def create_order(request):
+    if request.user.is_authenticated:
+        if request.user.is_client == True:
+            if request.method == 'POST':               
+                client = Client.objects.get(email=request.user.email)
+                title = request.POST['title']
+                description = request.POST['description']
+                budget = request.POST['budget']
+                deadline = request.POST['deadline']
+                return redirect("../client/upcoming_projects")
+
+            return render(request, "client/create_order.html")
+    else:
+        return redirect("login")

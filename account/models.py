@@ -175,7 +175,9 @@ class AvailableProjects(models.Model):
     task=models.CharField(max_length=200, default='videographer')
     description=models.TextField(null=True,blank=True)
     deadline=models.DateField()
+    start_date=models.DateField()
     role=models.CharField(max_length=50, default='videographer')
+    applicants=models.JSONField(default=[],null=True,blank=True)
 
 
 class Invoice(models.Model):

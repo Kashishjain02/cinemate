@@ -22,23 +22,15 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-# ------------------------------------------------------------------------------
-# ------------------------------------------------------------------------------
 
-
-def uniquecode():
-    # this function returns a unique code everytime it is called
-    x = datetime.datetime.now()
-    alphabets = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z',
-                 'X', 'C', 'V', 'B', 'N', 'M']
-    uniquecode = str(x.day) + str(x.month) + str(x.year)[2:] + random.choice(alphabets) + random.choice(
-        alphabets) + str(x.time())[0:2] + str(x.time())[3:5]
-    return uniquecode
-
-
-# -----------------------------------------------------------------------
 def register(request):
-        return render(request, "account/account_notreg.html")
+    user = request.user
+    if user.is_authenticated:
+        if user.is_freelancer:
+            return redirect("dashboard")
+        else:
+            return redirect("home")
+    return render(request, "account/account_notreg.html")
 
 def userregister(request):
     if request.method == 'POST':

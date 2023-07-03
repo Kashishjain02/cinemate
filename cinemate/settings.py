@@ -40,6 +40,10 @@ INSTALLED_APPS = [
 
     'account.apps.AccountConfig',
     'client.apps.ClientConfig',
+    'rest_framework',
+
+    # for api
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
