@@ -178,6 +178,7 @@ class AvailableProjects(models.Model):
     start_date=models.DateField(default=datetime.date.today)
     role=models.CharField(max_length=50, default='videographer')
     applicants=models.JSONField(default=[],null=True,blank=True)
+    location=models.CharField(max_length=50, default='remote')
 
 
 class Invoice(models.Model):

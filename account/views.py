@@ -337,6 +337,16 @@ def report(request):
         return redirect("login")
 
 
+def explore(request):
+    if request.user.is_authenticated:
+        if request.user.is_freelancer:
+            projects=AvailableProjects.objects.all()
+            return render(request, "account/explore.html",{'projects':projects})
+        else:
+            return redirect("unauthorized")
+    else:
+        return redirect("login")
+
 def check(request):
     return render(request, 'account/temp.html')
 

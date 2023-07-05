@@ -1,0 +1,74 @@
+{% extends 'account/base.html' %} {%load static%} {% block title%} Explore
+{%endblock%} {% block head %} 
+<style>
+    .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px
+}
+</style>
+{% endblock %}{% block body%}
+<div class="container mt-5 mb-3">
+    <div class="row">
+        {%for i in projects%}
+        <div class="col-md-4">
+            <div class="card p-3 mb-2" style="box-shadow: 5px 5px #88888875;border-radius: 20px;">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                        <div class="icon"> <img
+                src="../../media/{{i.client.client.image}}"
+                alt="{{i.client.client.name}}"
+                class="img-fluid"
+                 /> </div>
+                        <div class="ms-2 c-details" style="padding-left:5px">
+                            <h5 class="mb-0" style="font-weight: 500;">{{i.client.client.name}}</h5> <span>@{{i.client.client.username}}</span>
+                        </div>
+                    </div>
+                    <div class="badge"> <span>Design</span> </div>
+                </div>
+                
+                <table class="table table-borderless" style="color:#000000">
+                    <tbody>
+                    <tr>
+                        <td><div><p class="m-0" style="font-size: 12px;">looking for</p><b>{{i.role}}</b></div></td>
+                        <td style="display: flex; justify-content: end;"><div><p class="m-0" style="font-size: 12px;">location</p><b>{{i.location}}</b></div></td>
+                    </tr>
+                    <tr>
+                        <td><div><p class="m-0" style="font-size: 12px;">Project Date</p><b>{{i.start_date}}</b></div></td>
+                        <td ><div style="display: flex; justify-content: end;"><p class="m-0" style="font-size: 12px;">Description</p></div><div style="display: flex; justify-content: end;"><b>{{i.description|slice:":15"}}</b></div></td>
+                    </tr>
+                    <tr>
+                        <td><b>Budget</b></td>
+                        <td ><div style="display: flex; justify-content: end;"><p class="m-0" style="font-size: 12px;">₹ {{i.amount}}</p></div></td>
+                    </tr>
+                    
+                    </tbody>
+                </table>
+
+                <button class="btn" style="color: #fff; background-color: #2f174e; border-color: #2f174e;">
+                    Apply
+                </button>
+
+                <div class="mt-3"> <span class="text1">{{i.applicant|length}} Applied </span> </div>
+
+                <!-- <div class="mt-5">
+                    <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
+                    <div class="mt-5">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="mt-3"> <span class="text1">32 Applied <span class="text2">of 50 capacity</span></span> </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        {%endfor%}
+
+    </div>
+</div>
+{%endblock%}

@@ -57,9 +57,10 @@ def create_order(request):
                 deadline = request.POST['deadline']
                 start_date = request.POST['start_date']
                 role = request.POST['role']
-                order = AvailableProjects(client=client,description=description,task=task,amount=budget,deadline=deadline,start_date=start_date,role=role)
+                location = request.POST['location']
+                order = AvailableProjects(client=client,description=description,task=task,amount=budget,deadline=deadline,start_date=start_date,role=role,location=location)
                 order.save()
-                return redirect("../client/upcoming_projects")
+                return redirect("home")
 
             return render(request, "client/create_order.html")
     else:
