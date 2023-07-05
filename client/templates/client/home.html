@@ -5,13 +5,24 @@
 {%endblock%} {% block body%} {%for i in portfolio%}
 <!-- <div style="width: 100%; height: 500px"> -->
 <div class="row h-100 mb-3 p-5">
-    <div class="col-lg-8 p-0" style="height: 50vh">
+    <div
+        class="col-lg-8 p-0 d-flex justify-content-center"
+        style="height: 50vh">
         {% if i.is_image %}
-        <img
-            src="../../media/{{i.image}}"
-            alt="..."
-            class="img-fluid"
-            style="width: 100%; height: 100%" />
+        <div
+            style="background: #000; width: 80%; height: 100%"
+            class="d-flex align-items-center justify-content-center">
+            <img
+                src="../../media/{{i.image}}"
+                alt="..."
+                class="img-fluid"
+                style="
+                    height: auto;
+                    max-width: 100%;
+                    width: auto;
+                    max-height: 100%;
+                " />
+        </div>
         {% else %}
         <iframe
             width="100%"
@@ -25,51 +36,72 @@
         </iframe>
         {% endif %}
     </div>
-    <div class="col-lg-4 p-3" style="display: flex; flex-direction: column">
+    <div class="col-lg-4 p-3">
         <div
             class="p-4"
             style="
-                background: #442d61;
-                border-radius: 31px 31px 0px 0px;
-                height: 80%;
+                background: #2f174e;
+                border-radius: 60px;
+                height: 100%;
                 color: #fff;
             ">
-            <div
-                class="d-flex align-items-center justify-content-around"
-                style="justify-content: space-between">
-                <div>
-                    <img
-                        src="../../media/{{i.freelancer.freelancer.image}}"
-                        style="height: 84px; border-radius: 50%" />
-                </div>
-                <div
-                    style="
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                    ">
-                    <b style="font-weight: 600; font-size: 24px"
-                        >{{i.freelancer.freelancer.name}}</b
-                    >
-                    <b>Director, Writer, Editor & more..</b>
-                </div>
-            </div>
-            <hr style="color: #cbdfeb; opacity: 1; height: 2px" />
-            Worked in this as: {{i.role}}<br /><br />
-            Overall Rank: {{i.freelancer.rank}}<br /><br />
-        </div>
-        <div
-            style="
-                height: 20%;
-                background: #2f174e;
-                border-radius: 0px 0px 31px 31px;
-            "
-            class="d-flex align-items-center justify-content-center">
-            <a
-                href="../profile/{{i.freelancer.pk}}"
-                style="color: #fff; font-weight: 600; font-size: 22px"
-                >View Profile</a
-            >
+            <!-- FOR : {{i.forclient}}<br /><br />
+            AS : Writer<br /><br />
+            IN : April 2020<br /><br />
+            WITH :<br />
+            @Shubhamkumar212 as Co-Writer<br />
+            @HemantShahh as Editor<br />
+            @GauravSharma01 as Videographer<br /><br />
+            Client's Review:<br />
+            Couldn't be happier with the results. They brought a fresh and
+            creative approach that truly captured the essence of my brand.
+            Highly recommend! -->
+            <table
+                class="table"
+                style="
+                    color: #fff;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                ">
+                <tbody>
+                    <tr>
+                        <th scope="row">FOR</th>
+                        <td>{{i.forclient}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">AS</th>
+                        <td>{{i.role}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">IN</th>
+                        <td colspan="2">{{i.date}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">With</th>
+                        <td
+                            colspan="2"
+                            style="font-size: 14px; font-weight: 400">
+                            @Shubhamkumar212 as Co-Writer<br />
+                            @HemantShahh as Editor
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>REVIEW</td>
+                    </tr>
+                    <tr>
+                        <td
+                            colspan="2"
+                            style="
+                                font-weight: 400;
+                                font-size: 14px;
+                                line-height: 17px;
+                            ">
+                            {{i.review}}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

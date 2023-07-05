@@ -5,15 +5,13 @@
 {%endblock%} {% block body%}
   <div class="container p-3 mt-5 mw-sm" style="background: #fff; border-radius:15px;" >
     <h1>Create Order</h1>
-    <form>
+    <form method="post" action="{% url 'create_order' %}">
+      {% csrf_token %}
       <div class="mb-3">
-        <label for="amount" class="form-label">Amount</label>
-        <input type="number" class="form-control" id="amount" name="amount" required>
+        <label for="amount" class="form-label">Budget</label>
+        <input type="number" class="form-control" id="amount" name="budget" required>
       </div>
-      <div class="mb-3">
-        <label for="order_date" class="form-label">Order Date</label>
-        <input type="datetime-local" class="form-control" id="order_date" name="order_date" required>
-      </div>
+
       <div class="mb-3">
         <label for="task" class="form-label">Task</label>
         <input type="text" class="form-control" id="task" name="task" value="videographer" required>

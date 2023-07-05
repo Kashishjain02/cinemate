@@ -50,10 +50,15 @@ def create_order(request):
         if request.user.is_client == True:
             if request.method == 'POST':               
                 client = Client.objects.get(email=request.user.email)
-                title = request.POST['title']
+                # title = request.POST['title']
                 description = request.POST['description']
+                task = request.POST['task']
                 budget = request.POST['budget']
                 deadline = request.POST['deadline']
+                start_date = request.POST['start_date']
+                role = request.POST['role']
+                order = AvailableProjects(client=client,description=description,task=task,amount=budget,deadline=deadline,start_date=start_date,role=role)
+                order.save()
                 return redirect("../client/upcoming_projects")
 
             return render(request, "client/create_order.html")
