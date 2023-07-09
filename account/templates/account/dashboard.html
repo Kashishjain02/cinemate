@@ -1,6 +1,6 @@
 {% extends 'account/base.html' %} {%load static%} {% block title%} Dashboard
 {%endblock%} {% block body%}
-<div class="container-fluid ">
+<div class="container-fluid " style="max-width: 1320px;">
     <div class="row h-100">
         <!-- Left Part with content -->
         <div
@@ -113,7 +113,7 @@
             <!-- end -->
 
             <!-- Recent Projects -->
-            <div class="row mt-5 p-5" style="width: 100%">
+            <div class="row mt-5 p-1" style="width: 100%">
                 <h2 style="font-size: 30px; font-weight: 600">
                     Recent Invoices
                 </h2>
@@ -208,7 +208,7 @@
             class="col-lg-5 p-0 d-flex align-items-center justify-content-center">
             <div style="width: 100%; height: 100%">
                 <!-- Upcoming Projects -->
-                <div class="row mt-5 p-5" style="width: 100%">
+                <div class="row " style="width: 100%">
                     <h2 style="font-size: 30px; font-weight: 600">
                         Upcoming Projects
                     </h2>
@@ -253,7 +253,7 @@
                 <!-- End -->
 
                 <!-- Suggested Projects -->
-                <div class="row mt-5 p-5" style="width: 100%">
+                <div class="row mt-5 " style="width: 100%">
                     <h2 style="font-size: 30px; font-weight: 600">
                         Recommended Projects
                     </h2>
@@ -290,7 +290,7 @@
                                     >
 
                                     <p class="mt-2">
-                                        {{available_project.description|slice:":100"}}
+                                        {{available_project.description|slice:":250"}}
                                     </p>
                                     <div
                                         style="
