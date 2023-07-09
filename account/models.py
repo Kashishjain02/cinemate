@@ -168,17 +168,7 @@ class UpcomingOrder(models.Model):
     role=models.CharField(max_length=50, default='videographer')
 
 
-class AvailableProjects(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='available_orders')
-    amount = models.IntegerField()
-    order_date = models.DateTimeField(auto_now_add=True)
-    task=models.CharField(max_length=200, default='videographer')
-    description=models.TextField(null=True,blank=True)
-    deadline=models.DateField()
-    start_date=models.DateField(default=datetime.date.today)
-    role=models.CharField(max_length=50, default='videographer')
-    applicants=models.JSONField(default=[],null=True,blank=True)
-    location=models.CharField(max_length=50, default='remote')
+
 
 
 class Invoice(models.Model):

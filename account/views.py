@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db.utils import IntegrityError
-from .models import Account, Freelancer, Client,Order,UpcomingOrder,AvailableProjects,Portfolio
-# from cart.models import Cartdata
+from .models import Account, Freelancer, Client,Order,UpcomingOrder,Portfolio
+from client.models import AvailableProjects
 from django.contrib.auth.models import auth, User
 from django.contrib.auth import logout, login, authenticate
 from account.forms import AccountAuthenticationForm

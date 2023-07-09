@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from account.models import Account, Freelancer, Client,Order,UpcomingOrder,AvailableProjects,Portfolio
+from account.models import Account, Freelancer, Client,Order,UpcomingOrder,Portfolio
+from client.models import AvailableProjects
 from django.shortcuts import render, redirect
 
 # Create your views here.

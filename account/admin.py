@@ -1,5 +1,5 @@
 from django.contrib import admin
-from account.models import Account, Freelancer, Client,Order,UpcomingOrder,AvailableProjects,Portfolio
+from account.models import Account, Freelancer, Client,Order,UpcomingOrder,Portfolio
 # from django.contrib.auth.admin import UserAdmin
 
 
@@ -29,7 +29,6 @@ admin.site.register(Freelancer, FreelancerAdmin)
 admin.site.register(Client)
 admin.site.register(Order)
 admin.site.register(UpcomingOrder)
-admin.site.register(AvailableProjects)
 admin.site.register(Portfolio)
 
 # admin.site.register(Account)
