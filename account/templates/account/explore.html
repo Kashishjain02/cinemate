@@ -50,9 +50,22 @@
                     </tbody>
                 </table>
 
-                <button class="btn" style="color: #fff; background-color: #2f174e; border-color: #2f174e;">
-                    Apply
-                </button>
+                <div class="row">
+                    <div class="col-6">
+                        <a href="{% url 'project_detail' i.id %}">
+                            <button class="btn" style="color: #fff; background-color: #2f174e; border-color: #2f174e; width: 100%;">
+                                Apply
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="{% url 'project_detail' i.id %}">
+                            <button class="btn" style="color: rgb(0, 0, 0); background-color: #fffb07; border-color: #fffb07; width: 100%;">
+                                Detail
+                            </button>
+                        </a>
+                    </div>
+                </div>
 
                 <div class="mt-3"> <span class="text1">{{i.applicant|length}} Applied </span> </div>
 

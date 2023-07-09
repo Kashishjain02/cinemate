@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db.utils import IntegrityError
 from account.models import Account, Freelancer, Client,Order,UpcomingOrder,Portfolio
-from client.models import AvailableProjects
+from client.models import AvailableProjects,Application
 from django.contrib.auth.models import auth, User
 from django.contrib.auth import logout, login, authenticate
 from account.forms import AccountAuthenticationForm
@@ -115,6 +115,23 @@ def monthly_report_api(request, id=None):
                     dictionary[month] = 1
             print(dictionary)
             return Response(dictionary)
+
+
+@csrf_exempt
+@api_view(['POST',])
+# @permission_classes([IsAuthenticated])
+@permission_classes([])
+def apply_for_project(request):
+    print("hello")
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            if request.user.is_freelancer == True:
+                freelancer = Freelancer.objects.get(email=request.user.email)
+                project = AvailableProjects.objects.get(pk=request.data.get('project_id'))
+                application = Application(project=project,crew=freelancer)
+                application.save()
+                print("application saved")
+                return Response({"msg":"applied successfully"},status=200)
 
         
 

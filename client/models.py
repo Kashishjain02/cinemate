@@ -19,5 +19,5 @@ class AvailableProjects(models.Model):
 class Application(models.Model):
     project = models.ForeignKey(AvailableProjects, on_delete=models.CASCADE)
     crew = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
-    applied_at = models.DateTimeField(auto_now_add=True)
+    applied_at = models.DateTimeField(default=datetime.datetime.now)
     is_accepted = models.BooleanField(default=False)

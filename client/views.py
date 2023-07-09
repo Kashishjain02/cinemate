@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from account.models import Account, Freelancer, Client,Order,UpcomingOrder,Portfolio
-from client.models import AvailableProjects
+from client.models import AvailableProjects,Application
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -66,3 +66,23 @@ def create_order(request):
             return render(request, "client/create_order.html")
     else:
         return redirect("login")
+
+def project_detail(request,id):
+    if request.user.is_authenticated:
+            order = AvailableProjects.objects.get(pk=id)
+            return render(request, "client/project_detail.html",{ 'project': order })
+    else:
+        return redirect("login")
+
+# def apply(request,id):
+#     if request.user.is_authenticated:
+#         if request.user.is_freelancer == True:
+#             if request.method == 'POST':
+#                 freelancer = Freelancer.objects.get(email=request.user.email)
+#                 project = AvailableProjects.objects.get(pk=id)
+#                 application = Application(project=project,crew=freelancer)
+#                 application.save()
+#                 return redirect("explore")
+#             return render(request, "client/apply.html")
+#     else:
+#         return redirect("login")
